@@ -28,9 +28,15 @@ export default class Movie extends Component {
       });
   };
   // Uncomment this code when you're ready for the stretch problems
-  componentWillReceiveProps(newProps){
-    if(this.props.match.params.id !== newProps.match.params.id){
-      this.fetchMovie(newProps.match.params.id);
+  // componentWillReceiveProps(newProps){
+  //   if(this.props.match.params.id !== newProps.match.params.id){
+  //     this.fetchMovie(newProps.match.params.id);
+  //   }
+  // }
+  // Updated this code to componentDidUpdate since componentWillReceiveProps is deprecated as of React 16
+  componentDidUpdate(prevProps) {
+    if(this.props.match.params.id !== prevProps.match.params.id){
+      this.fetchMovie(this.props.match.params.id);
     }
   }
 
